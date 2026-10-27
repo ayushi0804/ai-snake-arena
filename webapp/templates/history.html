@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block content %}
+<h1>Match history</h1>
+<div id="hi-state" class="state" role="status"><div class="spinner"></div>Loading…</div>
+<div class="card table-wrap" id="hi-wrap" hidden><table id="hi-table"></table></div>
+<div class="btn-row"><button class="btn" id="hi-more" type="button" hidden>Load more</button></div>
+{% endblock %}
+{% block scripts %}<script src="/static/js/pages.js"></script>{% endblock %}

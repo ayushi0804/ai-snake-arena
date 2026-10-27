@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ title }} · AI Snake Arena</title>
+<meta name="description" content="AI Snake Arena: play Snake against A*, BFS, Dijkstra and a safe adaptive AI. Installable and playable offline.">
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/static/icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/icons/icon-192.png">
+<link rel="stylesheet" href="/static/css/app.css">
+</head>
+<body data-page="{{ page }}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="brand" href="/">🐍 AI Snake Arena</a>
+  <nav id="nav" aria-label="Main">
+    <a href="/" data-page="index"><span class="ic">🏠</span>Home</a>
+    <a href="/play" data-page="play"><span class="ic">🎮</span>Play</a>
+    <a href="/dashboard" data-page="dashboard"><span class="ic">📊</span>Dashboard</a>
+    <a href="/leaderboard" data-page="leaderboard"><span class="ic">🏆</span>Ranks</a>
+    <a href="/history" data-page="history"><span class="ic">🕘</span>History</a>
+    <a href="/benchmark" data-page="benchmark"><span class="ic">🧪</span>Lab</a>
+    <a href="/settings" data-page="settings"><span class="ic">⚙️</span>Settings</a>
+  </nav>
+  <div class="top-actions">
+    <button class="btn" id="btn-theme" type="button" aria-label="Toggle light or dark theme">🌓</button>
+    <button class="btn primary" id="btn-install" type="button" hidden>Install</button>
+  </div>
+</header>
+<div id="net-banner" role="status" hidden>You are offline. The game still works; stats, leaderboard and benchmarks need a connection. Finished matches are queued and sync later.</div>
+<main id="main" tabindex="-1">
+{% block content %}{% endblock %}
+</main>
+<script src="/static/js/engine.js"></script>
+<script src="/static/js/ai.js"></script>
+<script src="/static/js/api.js"></script>
+<script src="/static/js/app.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

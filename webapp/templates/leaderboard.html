@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block content %}
+<h1>Leaderboard</h1>
+<section class="card"><div class="form">
+  <label>Difficulty<select id="lb-diff"><option value="">All</option><option>classic</option><option>easy</option><option>normal</option><option>hard</option><option>insane</option></select></label>
+  <label>Mode<select id="lb-mode"><option value="">All</option><option value="manual">Manual</option><option value="ai">AI</option></select></label></div></section>
+<p class="state" style="padding:0;text-align:left">Best score per player. All scores are <b>client-reported</b>: the server checks plausibility but cannot verify gameplay.</p>
+<div id="lb-state" class="state" role="status"><div class="spinner"></div>Loading…</div>
+<div class="card table-wrap" id="lb-wrap" hidden><table id="lb-table"></table></div>
+{% endblock %}
+{% block scripts %}<script src="/static/js/pages.js"></script>{% endblock %}

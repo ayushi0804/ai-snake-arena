@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block content %}
+<h1>Dashboard</h1><p class="state" style="padding:0;text-align:left">Your matches on this device's guest profile. Figures are client-reported, not server-verified.</p>
+<div id="dash-state" class="state" role="status"><div class="spinner"></div>Loading…</div>
+<div id="dash-body" hidden>
+  <div class="grid g4" id="dash-cards"></div><br>
+  <div class="grid g2">
+    <section class="card chart-card"><h3>Score progression (last 30)</h3><canvas class="chart" id="ch-score"></canvas></section>
+    <section class="card chart-card"><h3>Match duration trend (seconds)</h3><canvas class="chart" id="ch-duration"></canvas></section>
+    <section class="card chart-card"><h3>Difficulty distribution</h3><canvas class="chart" id="ch-diff"></canvas></section>
+    <section class="card chart-card"><h3>Outcomes</h3><canvas class="chart" id="ch-outcome"></canvas></section>
+  </div>
+  <section class="card"><h2>Algorithm comparison (AI matches you played)</h2><p id="algo-note" class="state" style="padding:0;text-align:left"></p>
+    <div class="grid g2" id="algo-charts"><div class="chart-card"><h3>Avg decision time (ms)</h3><canvas class="chart" id="ch-a-time"></canvas></div><div class="chart-card"><h3>Avg nodes explored</h3><canvas class="chart" id="ch-a-nodes"></canvas></div>
+    <div class="chart-card"><h3>Avg path length</h3><canvas class="chart" id="ch-a-len"></canvas></div><div class="chart-card"><h3>Path success rate (%)</h3><canvas class="chart" id="ch-a-rate"></canvas></div></div></section>
+  <section class="card"><h2>Recent matches</h2><div class="table-wrap"><table id="tbl-recent"></table></div></section>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/static/js/charts.js"></script><script src="/static/js/pages.js"></script>{% endblock %}

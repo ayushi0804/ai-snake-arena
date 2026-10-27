@@ -1,0 +1,53 @@
+{% extends "base.html" %}{% block content %}
+<h1 class="sr-only" style="position:absolute;left:-999px">Play Snake</h1>
+<section class="play-layout">
+  <div>
+    <div class="hud" aria-label="Game status">
+      <span><small>Score</small><span id="hud-score">0</span></span>
+      <span><small>Best</small><span id="hud-best">0</span></span>
+      <span><small>Length</small><span id="hud-length">1</span></span>
+      <span><small>Speed</small><span id="hud-speed">8</span>/s</span>
+      <span id="hud-effects"></span>
+    </div>
+    <div class="board-wrap" id="board-wrap">
+      <canvas id="board" role="img" aria-label="Snake game board" tabindex="0"></canvas>
+      <div class="overlay" id="overlay" role="dialog" aria-live="polite" aria-labelledby="ov-title">
+        <h2 id="ov-title">Ready?</h2><p id="ov-body"></p>
+        <div class="btn-row"><button class="btn primary" id="ov-primary" type="button">Start</button><a class="btn" id="ov-link" href="/dashboard" hidden>Dashboard</a></div>
+      </div>
+    </div>
+    <div class="dpad" aria-label="Directional controls">
+      <button type="button" class="up" data-dir="up" aria-label="Up">▲</button><button type="button" class="left" data-dir="left" aria-label="Left">◀</button>
+      <button type="button" class="down" data-dir="down" aria-label="Down">▼</button><button type="button" class="right" data-dir="right" aria-label="Right">▶</button>
+    </div>
+  </div>
+  <aside>
+    <section class="card" aria-label="Game controls">
+      <div class="btn-row" style="margin-bottom:10px">
+        <button class="btn" id="btn-pause" type="button">Pause</button><button class="btn" id="btn-restart" type="button">Restart</button>
+        <button class="btn" id="btn-mute" type="button" aria-pressed="false">🔊 Sound</button>
+      </div>
+      <div class="form">
+        <label>Mode<select id="sel-mode"><option value="manual">Manual</option><option value="ai">AI plays</option></select></label>
+        <label>AI strategy<select id="sel-strategy"><option value="adaptive">Adaptive (safe)</option><option value="astar">A*</option><option value="bfs">BFS</option><option value="dijkstra">Dijkstra</option><option value="hamiltonian">Hamiltonian cycle</option></select></label>
+        <label>Adaptive base search<select id="sel-base"><option value="astar">A*</option><option value="bfs">BFS</option><option value="dijkstra">Dijkstra</option></select></label>
+        <label>Difficulty<select id="sel-difficulty"><option value="classic">Classic</option><option value="easy">Easy</option><option value="normal">Normal</option><option value="hard">Hard</option><option value="insane">Insane</option></select></label>
+        <label>Board<select id="sel-board"><option value="small">Small 16×10</option><option value="classic">Classic 25×12</option><option value="large">Large 30×16</option></select></label>
+        <label>Speed ×<span id="out-speed">1.0</span><input type="range" id="rng-speed" min="0.5" max="2" step="0.1" value="1"></label>
+      </div>
+      <label class="check"><input type="checkbox" id="chk-wrap"> Wrap-around walls</label>
+      <label class="check"><input type="checkbox" id="chk-obstacles"> Obstacles (hard difficulties)</label>
+      <label class="check"><input type="checkbox" id="chk-powerups"> Bonus apples &amp; power-ups</label>
+      <label class="check"><input type="checkbox" id="chk-path"> Show AI path</label>
+    </section>
+    <section class="card" aria-live="off"><h2>AI insight</h2>
+      <dl class="readout">
+        <dt>Strategy</dt><dd id="ai-strategy">–</dd><dt>Decision</dt><dd id="ai-reason">–</dd><dt>Path length</dt><dd id="ai-path">–</dd>
+        <dt>Nodes explored</dt><dd id="ai-explored">–</dd><dt>Compute time</dt><dd id="ai-time">–</dd><dt>Safety</dt><dd id="ai-safe">–</dd>
+      </dl></section>
+    <details class="card"><summary>Controls &amp; shortcuts</summary>
+      <p>Arrow keys or swipe the board. <b>Space/P</b> pause · <b>R</b> restart · <b>M</b> manual⇄AI · <b>A</b> A* · <b>B</b> BFS · <b>D</b> Dijkstra · <b>S</b> adaptive · <b>H</b> Hamiltonian · <b>V</b> path · <b>N</b> mute · <b>+/−</b> speed.</p></details>
+  </aside>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/sound.js"></script><script src="/static/js/game.js"></script>{% endblock %}

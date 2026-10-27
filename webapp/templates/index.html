@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block content %}
+<section class="hero">
+  <h1>AI Snake Arena</h1>
+  <p>Classic Snake with a safety-aware AI. Play yourself or watch A*, BFS, Dijkstra, an adaptive safe AI and a verified Hamiltonian-cycle strategy compete. Works on phones, installs as an app, and plays offline.</p>
+  <div class="btn-row"><a class="btn primary" href="/play">Play now</a><a class="btn" href="/benchmark">Open the benchmark lab</a></div>
+</section>
+<div class="grid g2">
+  <article class="card"><h2>Play</h2><p>Manual or AI, five difficulties, obstacles, power-ups, wrap-around mode and touch controls.</p><a class="btn" href="/play">Open game</a></article>
+  <article class="card"><h2>Analytics</h2><p>Your real match history, score trends and algorithm comparisons. Empty until you play.</p><a class="btn" href="/dashboard">Open dashboard</a></article>
+  <article class="card"><h2>Benchmark lab</h2><p>Reproducible, seeded A* vs BFS vs Dijkstra runs, exportable as CSV.</p><a class="btn" href="/benchmark">Run benchmarks</a></article>
+  <article class="card"><h2>Leaderboard</h2><p>Best score per player. Scores are client-reported, not server-verified.</p><a class="btn" href="/leaderboard">View ranks</a></article>
+</div>
+<section class="card" id="install-help">
+  <h2>Install &amp; offline use</h2>
+  <p>Use the <b>Install</b> button (Chrome/Edge) or: Android Chrome menu → <i>Install app</i>; iPhone Safari Share → <i>Add to Home Screen</i>. Installation needs HTTPS in production; <code>http://localhost</code> is allowed for development.</p>
+  <p><b>Works offline:</b> the game itself (manual and AI), local high score, settings. <b>Needs a connection:</b> dashboard, history, leaderboard, benchmarks. Matches finished offline are saved on the device and uploaded when you reconnect.</p>
+</section>
+{% endblock %}

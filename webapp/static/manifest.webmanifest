@@ -1,0 +1,19 @@
+{
+  "name": "AI Snake Arena",
+  "short_name": "Snake Arena",
+  "description": "Snake with A*, BFS, Dijkstra and a safe adaptive AI. Playable offline.",
+  "start_url": "/play",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "categories": ["games"],
+  "icons": [
+    {"src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "/static/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+    {"src": "/static/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}
+  ],
+  "shortcuts": [{"name": "Play", "url": "/play"}, {"name": "Dashboard", "url": "/dashboard"}]
+}

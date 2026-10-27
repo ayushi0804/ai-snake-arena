@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block content %}
+<h1>Settings</h1>
+<form id="set-form" class="card"><div class="form">
+  <label>Display name<input type="text" id="s-name" maxlength="20" placeholder="Guest"></label>
+  <label>Theme<select id="s-theme"><option value="dark">Dark</option><option value="light">Light</option></select></label>
+  <label>Default mode<select id="s-mode"><option value="manual">Manual</option><option value="ai">AI</option></select></label>
+  <label>Default AI strategy<select id="s-strategy"><option value="adaptive">Adaptive</option><option value="astar">A*</option><option value="bfs">BFS</option><option value="dijkstra">Dijkstra</option><option value="hamiltonian">Hamiltonian</option></select></label>
+  <label>Difficulty<select id="s-difficulty"><option>classic</option><option>easy</option><option>normal</option><option>hard</option><option>insane</option></select></label>
+  <label>Board<select id="s-board"><option value="small">Small</option><option value="classic">Classic</option><option value="large">Large</option></select></label>
+  <label>Volume<input type="range" id="s-volume" min="0" max="1" step="0.1"></label>
+  <label>Speed ×<input type="range" id="s-speed" min="0.5" max="2" step="0.1"></label></div>
+  <label class="check"><input type="checkbox" id="s-sound"> Sound effects</label><label class="check"><input type="checkbox" id="s-wrap"> Wrap-around walls</label>
+  <label class="check"><input type="checkbox" id="s-obstacles"> Obstacles</label><label class="check"><input type="checkbox" id="s-powerups"> Bonus apples &amp; power-ups</label>
+  <label class="check"><input type="checkbox" id="s-showPath"> Show AI path</label>
+  <div class="btn-row"><button class="btn primary" type="submit">Save</button><button class="btn" type="button" id="s-reset">Reset to defaults</button><button class="btn" type="button" id="s-clear">Clear local data</button></div>
+  <p id="s-status" class="state" role="status" style="text-align:left;padding:8px 0"></p></form>
+<section class="card"><h2>About your data</h2><p>You play as an anonymous guest identified by a random ID stored on this device. Settings are saved locally (works offline) and synced to the server when it is reachable. "Clear local data" removes the local ID, high score and unsent matches; server-side history stays under the old ID.</p><p id="s-guest" class="badge"></p></section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/pages.js"></script>{% endblock %}

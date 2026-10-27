@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block content %}
+<h1>AI Benchmarking Lab</h1>
+<section class="card"><h2>What is measured</h2>
+<p><b>Pathfinding</b> benchmarks run A*, BFS and Dijkstra on <i>identical</i> seeded board states and measure time (min of 3 repeats), nodes expanded, path length, success rate, and whether the path is <i>safe</i> (a virtual snake can follow it and still reach its tail). <b>Survival</b> benchmarks play whole seeded games and are reported separately, because a shortest path says nothing about surviving afterwards.</p>
+<p>On this unweighted grid BFS, Dijkstra and A* (Manhattan heuristic, admissible) all find shortest paths; they differ in effort. With weighted terrain only Dijkstra/A* stay optimal, and BFS does not. Timings come from the server's Python engine and vary by machine.</p></section>
+<section class="card"><form id="bm-form" class="form">
+  <label>Kind<select id="bm-kind"><option value="pathfinding">Pathfinding</option><option value="survival">Survival (full games)</option></select></label>
+  <label>Seed<input type="number" id="bm-seed" value="1" min="0" max="2147483647"></label>
+  <label>Board width<input type="number" id="bm-w" value="25" min="5" max="40"></label>
+  <label>Board height<input type="number" id="bm-h" value="12" min="5" max="40"></label>
+  <label id="lb-scen">Scenarios / games<input type="number" id="bm-n" value="100" min="1" max="500"></label>
+  <label>Snake length<input type="number" id="bm-len" value="8" min="1" max="100"></label>
+  <label>Obstacle fraction<input type="number" id="bm-obs" value="0.05" min="0" max="0.2" step="0.01"></label>
+  <div style="align-self:end"><button class="btn primary" type="submit" id="bm-run">Run benchmark</button></div></form></section>
+<div id="bm-state" class="state" role="status" hidden></div>
+<section class="card" id="bm-results" hidden><h2>Result</h2><div class="table-wrap"><table id="bm-table"></table></div>
+ <div class="grid g2"><div class="chart-card"><h3 id="bm-c1t"></h3><canvas class="chart" id="bm-c1"></canvas></div><div class="chart-card"><h3 id="bm-c2t"></h3><canvas class="chart" id="bm-c2"></canvas></div></div></section>
+<section class="card"><h2>Stored runs</h2><div class="btn-row" style="margin-bottom:8px"><a class="btn" href="/api/v1/benchmarks/export.csv" download>Export CSV</a><button class="btn" type="button" id="bm-reload">Refresh</button></div>
+<div id="bm-hist-state" class="state"></div><div class="table-wrap"><table id="bm-hist"></table></div></section>
+{% endblock %}
+{% block scripts %}<script src="/static/js/charts.js"></script><script src="/static/js/pages.js"></script>{% endblock %}
